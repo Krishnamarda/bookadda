@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+
+<style>
+.body {
+	background: linear-gradient(orange, yellow, yellow);
+}
+
+#mainContainer {
+	height: 700px;
+	width: 1040px;
+	margin: 100px 100px 150px 150px;
+	background-color: white;
+	box-shadow: 0px 0px 25px 0px grey;
+}
+
+#header {
+	width: 100%;
+	background: red;
+	height: 50px;
+}
+
+.DP {
+	height: 150px;
+	width: 150px;
+	align: center;
+}
+
+#leftPan {
+	width: 200px;
+	height: 650px;
+	border-right: 1px solid silver;
+	float:left;
+}
+
+#rightPan {
+	width: 600px;
+	height: 650px;
+	border-right: 1px solid silver;
+	float:left;
+}
+
+#searchText {
+	font-family: 'Bree Serif', serif;
+	font-size: 20px;
+	padding: 13px 0px 0px 60px;
+	float: left;
+}
+
+.input {
+	width: 388px;
+	padding: 11px 25px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
+		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	color: #9d9e9e;
+	text-shadow: 1px 1px 0 rgba(256, 256, 256, 1.0);
+	margin-left: 30px;
+	margin-top: 5px; float : left; background : #fff;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);
+	-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);
+	-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);
+	background: #fff;
+	float: left
+}
+
+.leftPanList li {
+	list-style-type: none;
+	padding: 15px 20px 20px 0px;
+	font-family: 'Bree Serif', serif;
+	font-weight: 300;
+	font-size: 18px;
+	
+}
+
+.leftPanList li:hover {
+background : silver;
+cursor: pointer;
+	
+}
+
+.rightPanList li {
+	list-style-type: none;
+	padding: 15px 20px 20px 0px;
+	font-family: 'Bree Serif', serif;
+	font-weight: 300;
+	font-size: 18px;
+	
+}
+
+.rightPanList li:hover {
+background : silver;
+cursor: pointer;
+	
+}
+
+
+#searchButton .button {
+	float:left;
+	padding: 9px 15px;
+	
+	font-family: 'Bree Serif', serif;
+	font-weight: 300;
+	font-size: 18px;
+	color: #fff;
+	text-shadow: 0px 1px 0 rgba(0,0,0,0.25);
+	margin-left: 30px;
+	margin-top: 5px;
+	background: #56c2e1;
+	border: 1px solid #46b3d3;
+	border-radius: 5px;
+	cursor: pointer;
+	
+	box-shadow: inset 0 0 2px rgba(256,256,256,0.75);
+	-moz-box-shadow: inset 0 0 2px rgba(256,256,256,0.75);
+	-webkit-box-shadow: inset 0 0 2px rgba(256,256,256,0.75);
+}
+
+#searchButton .button:hover {
+	background: #3f9db8;
+	border: 1px solid rgba(256,256,256,0.75);
+	
+	box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+	-moz-box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+}
+
+#searchButton .button:focus {
+	position: relative;
+	bottom: -1px;
+	
+	background: #56c2e1;
+	
+	box-shadow: inset 0 1px 6px rgba(256,256,256,0.75);
+	-moz-box-shadow: inset 0 1px 6px rgba(256,256,256,0.75);
+	-webkit-box-shadow: inset 0 1px 6px rgba(256,256,256,0.75);
+}
+.home{
+    height: 50px;
+	width: 50px;
+	align: center;
+	float:left;
+	padding-left : 5px;
+	cursor : pointer;
+}
+.img{
+padding-left:20px;
+padding-top:5px;
+}
+
+
+</style>
+</head>
+<body class="body">
+	<div id="mainContainer">
+		<div id="header">
+			<!-- <div class="home"><img src="images/home.png"  class="home"></div> -->
+			<div id="searchText">Search Books</div>
+			<div id="searchTextBox">
+				<input type="text" class="input"
+					placeholder="Book Name, Author Name, Location etc." />
+			</div>
+			<div id="searchButton">
+				<input type="button" name="button" value="Search" class="button" />
+			</div>
+		</div>
+		<div id="leftPan">
+			<div class="DP">
+				<img src="images/user_2.png" class="DP img">
+			</div>
+			<div class="leftPanContent">
+				<ul class="leftPanList">
+					<li>Home</li>
+					<li>Profile</li>
+					<li>My Wishlist</li>
+					<li>My OwnList</li>
+					<li>Messages</li>
+					<li>Logout</li>
+				</ul>
+			</div>
+		</div>
+		<div id="rightPan">
+			Nearest book available
+			<ul class="rightPanList">
+			<li>Harry Potter</li>
+			<li>Shiva Triology - Oath of vayuputra</li>
+			</ul>
+			
+		</div>
+	</div>
+</body>
+</html>
