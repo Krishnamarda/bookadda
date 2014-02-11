@@ -2,24 +2,41 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+var panel='';
+$(document).ready(function(){
+  $(".book").click(function(event){
+     var temp='#'+$(this).next().attr('id')
+     if((panel!='' || panel!='undefined' )&& panel!=temp){
+    		 $(panel).slideUp();
+     }
+     $(this).next().toggle("fast");
+     panel=temp;
+     
+  });
+  
+});
+</script>
 <title>Insert title here</title>
 
 <style>
 .body {
-	background: linear-gradient(orange, yellow, yellow);
+	background: linear-gradient(#FFA319, #FFFF66, #FFFF66);
 }
 
 #mainContainer {
 	height: 700px;
 	width: 1040px;
-	margin: 100px 100px 150px 150px;
+	margin: 0px 100px 150px 150px;
 	background-color: white;
 	box-shadow: 0px 0px 25px 0px grey;
 }
 
 #header {
 	width: 100%;
-	background: red;
+	background: orange;
 	height: 50px;
 }
 
@@ -80,13 +97,12 @@
 }
 
 .leftPanList li:hover {
-background : silver;
+background : #EEEEDE;
 cursor: pointer;
 	
 }
 
 .rightPanList li {
-	list-style-type: none;
 	padding: 15px 20px 20px 0px;
 	font-family: 'Bree Serif', serif;
 	font-weight: 300;
@@ -95,7 +111,7 @@ cursor: pointer;
 }
 
 .rightPanList li:hover {
-background : silver;
+background : #EEEEDE;
 cursor: pointer;
 	
 }
@@ -154,7 +170,23 @@ padding-left:20px;
 padding-top:5px;
 }
 
+#rightPan h1{
+font-family: 'Bree Serif', serif;
+	font-weight: 300;
+	font-size: 28px;
+color:  #999966;
+border-bottom: 1px solid silver;
+}
 
+.book{
+font-family: 'Bree Serif', serif;
+	font-weight: 300;
+	font-size: 25px;
+}
+
+.bookDesc table{
+background-color:   #EEEEDE;
+}
 </style>
 </head>
 <body class="body">
@@ -186,10 +218,42 @@ padding-top:5px;
 			</div>
 		</div>
 		<div id="rightPan">
-			Nearest book available
+			<h1>Books available near your address</h1>
 			<ul class="rightPanList">
-			<li>Harry Potter</li>
-			<li>Shiva Triology - Oath of vayuputra</li>
+			<li>
+				<div id="flip1" class="book">Harry Potter</div>
+				<div id="panel1" class="bookDesc" style="display : none;">
+				<table width="100%">
+					<tr>
+						<td>User-1</td>
+						<td>Pimple Saudagar, Kunal Icon</td>
+						<td align="right"><a href="#">Leave a message</a></td>
+					</tr>
+					<tr>
+						<td>User-2</td>
+						<td>Infosys Phase2</td>
+						<td align="right"><a href="#">Leave a message</a></td>
+					</tr>
+				</table>
+				</div>
+			</li>
+			<li>
+				<div id="flip2" class="book">Shiva Triology - Oath of vayuputra</div>
+				<div id="panel2" class="bookDesc" style="display : none;">
+				<table width="100%">
+					<tr>
+						<td>User-1</td>
+						<td>Pimple Saudagar, Kunal Icon</td>
+						<td align="right"><a href="#">Leave a message</a></td>
+					</tr>
+					<tr>
+						<td>User-2</td>
+						<td>Infosys Phase2</td>
+						<td align="right"><a href="#">Leave a message</a></td>
+					</tr>
+				</table>
+				</div>
+			</li>
 			</ul>
 			
 		</div>
