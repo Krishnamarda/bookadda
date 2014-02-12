@@ -6,8 +6,9 @@
 </script>
 <script>
 var panel='';
+var menu = ['rightPanHome', 'rightPanProfile','rightPanWishList','rightPanOwnList','rightPanMessage'];
 $(document).ready(function(){
-  $(".book").click(function(event){
+  $(".rightPanItem").click(function(event){
      var temp='#'+$(this).next().attr('id')
      if((panel!='' || panel!='undefined' )&& panel!=temp){
     		 $(panel).slideUp();
@@ -17,13 +18,32 @@ $(document).ready(function(){
      
   });
   
+  
 });
+
+function ticker() {
+    $('.ticker p:first').slideUp(function() {
+        $(this).appendTo($('.ticker')).slideDown();
+    });
+}
+setInterval(ticker, 5000);
+function setAction(linkNum){
+	if(linkNum==5){
+		return;
+	}
+var menuLen=menu.length;	
+	for(var i =0;i<menuLen;i++){
+		document.getElementById(menu[i]).style.display='none';
+	}
+	document.getElementById(menu[linkNum]).style.display='block';
+}
+
 </script>
-<title>Insert title here</title>
+<title>Book Adda</title>
 
 <style>
 .body {
-	background: linear-gradient(#FFA319, #FFFF66, #FFFF66);
+	 background: linear-gradient(#FFA319, #FFFF66, #FFFF66);
 }
 
 #mainContainer {
@@ -36,7 +56,7 @@ $(document).ready(function(){
 
 #header {
 	width: 100%;
-	background: orange;
+	background: #CC3300;
 	height: 50px;
 }
 
@@ -53,7 +73,7 @@ $(document).ready(function(){
 	float:left;
 }
 
-#rightPan {
+.rightPan{
 	width: 600px;
 	height: 650px;
 	border-right: 1px solid silver;
@@ -68,7 +88,7 @@ $(document).ready(function(){
 }
 
 .input {
-	width: 388px;
+	width: 188px;
 	padding: 11px 25px;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
 		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -97,7 +117,7 @@ $(document).ready(function(){
 }
 
 .leftPanList li:hover {
-background : #EEEEDE;
+background : #FEEF90;
 cursor: pointer;
 	
 }
@@ -111,13 +131,12 @@ cursor: pointer;
 }
 
 .rightPanList li:hover {
-background : #EEEEDE;
-cursor: pointer;
-	
+/* background : #FEEF90; */
+text-decoration: underline;
 }
 
 
-#searchButton .button {
+.button {
 	float:left;
 	padding: 9px 15px;
 	
@@ -138,7 +157,7 @@ cursor: pointer;
 	-webkit-box-shadow: inset 0 0 2px rgba(256,256,256,0.75);
 }
 
-#searchButton .button:hover {
+.button:hover {
 	background: #3f9db8;
 	border: 1px solid rgba(256,256,256,0.75);
 	
@@ -147,7 +166,7 @@ cursor: pointer;
 	-webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
 }
 
-#searchButton .button:focus {
+.button:focus {
 	position: relative;
 	bottom: -1px;
 	
@@ -170,7 +189,7 @@ padding-left:20px;
 padding-top:5px;
 }
 
-#rightPan h1{
+.rightPan h1{
 font-family: 'Bree Serif', serif;
 	font-weight: 300;
 	font-size: 28px;
@@ -178,14 +197,15 @@ color:  #999966;
 border-bottom: 1px solid silver;
 }
 
-.book{
+.rightPanItem{
 font-family: 'Bree Serif', serif;
 	font-weight: 300;
 	font-size: 25px;
+	cursor : pointer;
 }
 
-.bookDesc table{
-background-color:   #EEEEDE;
+.ticker p{
+border-bottom: 1px solid silver;
 }
 </style>
 </head>
@@ -196,7 +216,7 @@ background-color:   #EEEEDE;
 			<div id="searchText">Search Books</div>
 			<div id="searchTextBox">
 				<input type="text" class="input"
-					placeholder="Book Name, Author Name, Location etc." />
+					placeholder="Book Name, Author Name, Location etc." style="width: 388px;"/>
 			</div>
 			<div id="searchButton">
 				<input type="button" name="button" value="Search" class="button" />
@@ -208,21 +228,25 @@ background-color:   #EEEEDE;
 			</div>
 			<div class="leftPanContent">
 				<ul class="leftPanList">
-					<li>Home</li>
-					<li>Profile</li>
-					<li>My Wishlist</li>
-					<li>My OwnList</li>
-					<li>Messages</li>
-					<li>Logout</li>
+					<li onclick="setAction(0);">Home</li>
+					<li onclick="setAction(1);">Profile</li>
+					<li onclick="setAction(2);">My Wishlist</li>
+					<li onclick="setAction(3);">My OwnList</li>
+					<li onclick="setAction(4);">Messages</li>
+					<li onclick="setAction(5);">Logout</li>
 				</ul>
 			</div>
 		</div>
-		<div id="rightPan">
+		
+	<!-- ------------------------- HOME SECTION STARTS HERE ------------------------- -->	
+	<!-- ------------------------- HOME SECTION STARTS HERE ------------------------- -->
+	
+		<div id="rightPanHome" class="rightPan">
 			<h1>Books available near your address</h1>
 			<ul class="rightPanList">
 			<li>
-				<div id="flip1" class="book">Harry Potter</div>
-				<div id="panel1" class="bookDesc" style="display : none;">
+				<div  class="rightPanItem">Harry Potter</div>
+				<div id="book1" class="bookDesc" style="display : none;">
 				<table width="100%">
 					<tr>
 						<td>User-1</td>
@@ -238,8 +262,8 @@ background-color:   #EEEEDE;
 				</div>
 			</li>
 			<li>
-				<div id="flip2" class="book">Shiva Triology - Oath of vayuputra</div>
-				<div id="panel2" class="bookDesc" style="display : none;">
+				<div class="rightPanItem">Shiva Triology - Oath of vayuputra</div>
+				<div id="book2" class="bookDesc" style="display : none;">
 				<table width="100%">
 					<tr>
 						<td>User-1</td>
@@ -255,8 +279,158 @@ background-color:   #EEEEDE;
 				</div>
 			</li>
 			</ul>
-			
 		</div>
+		
+	<!-- ------------------------- PROFILE SECTION STARTS HERE ------------------------- -->	
+	<!-- ------------------------- PROFILE SECTION STARTS HERE ------------------------- -->	
+	
+		<div id="rightPanProfile" style="display:none;" class="rightPan">
+			<h1>Profile</h1>
+			<ul class="rightPanList">
+			<li>
+				<div class="rightPanItem">Pesonal Details</div>
+				<div id="personal1" class="personalDetails" style="display : none;">
+				<table width="100%">
+					<tr>
+						<td>First Name</td>
+						<td><input type="text" class="input"/></td>
+					</tr>
+					<tr>
+						<td>Last Name</td>
+						<td><input type="text" class="input"/></td>	
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td><input type="text" class="input"/></td>	
+					</tr>
+					<tr>
+						<td>Password</td>
+						<td><input type="password" class="input"/></td>	
+					</tr>
+					<tr>
+						<td style="padding:15px 0px 0px 0px;">Gender</td>
+						<td style="padding:15px 0px 0px 35px;">Male<input type=radio name="gender" value="M">&nbsp;
+						Female<input type=radio name="gender" value="F"></td>
+					</tr>
+				</table>
+				</div>
+			</li>
+			<li>
+				<div class="rightPanItem">Residential Address</div>
+				<div id="personal2" class="rAddressDetails" style="display : none;">
+				<table width="100%">
+					<tr>
+						<td>Flat/House No.</td>
+						<td><input type="text" class="input"></td>						
+					</tr>
+					<tr>
+						<td>Society/Locality</td>
+						<td><input type="text" class="input"></td>						
+					</tr>
+					<tr>
+						<td>Area</td>
+						<td><input type="text" class="input"></td>						
+					</tr>
+					<tr>
+						<td>City</td>
+						<td><input type="text" class="input"></td>						
+					</tr>
+					<tr>
+						<td>State</td>
+						<td><Select name="state" class="input" style="width:240px;">
+						<option value="">Select</option>
+						<option value="MP">Madhya Pradesh</option>
+						<option value="MH">Maharashtra</option>
+						<option value="TN">Tamil Nadu</option>
+						<option value="RJ">Rajasthan</option>
+						</Select></td>					
+					</tr>
+					<tr>
+						<td>Country</td>
+						<td><Select name="country" class="input" style="width:240px;">
+						<option value="">Select</option>
+						<option value="IN">India</option>
+						<option value="AU">Australia</option>
+						<option value="US">USA</option>
+						<option value="EN">England</option>
+						</Select></td>						
+					</tr>
+					<tr>
+						<td>Pincode</td>
+						<td><input type="text" class="input"></td>						
+					</tr>
+				</table>
+				</div>
+			</li>
+			</ul>
+		</div>
+		
+	<!-- ------------------------- WISHLIST SECTION STARTS HERE ------------------------- -->	
+	<!-- ------------------------- WISHLIST SECTION STARTS HERE ------------------------- -->
+		
+		<div id="rightPanWishList" style="display:none;" class="rightPan">
+			<h1>WishList</h1>
+				<div>
+				<p>Add books that you don't have and wish to exchange/borrow from other users who work in your company
+				or study in your school/college or reside in the same locality/building.</p>
+				</div>
+				<div id="wishlist" class="wishListDetails">
+				<table width="100%">
+					<tr>
+						<td><input type="text" class="input"/></td>
+						<td><input type="button" value="Add" class="button"></td>
+					</tr>
+				</table>
+				</div>
+		</div>
+		
+		
+	<!-- ------------------------- OWNLIST SECTION STARTS HERE ------------------------- -->	
+	<!-- ------------------------- OWNLIST SECTION STARTS HERE ------------------------- -->
+		
+		<div id="rightPanOwnList" style="display:none;" class="rightPan">
+			<h1>WishList</h1>
+				<div>
+				<p>Add books that you have and wish to exchange/lend to other users.</p>
+				</div>
+				<div id="wishlist" class="wishListDetails">
+				<table width="100%">
+					<tr>
+						<td><input type="text" class="input"/></td>
+						<td><input type="button" value="Add" class="button"></td>
+					</tr>
+				</table>
+				</div>
+		</div>
+		
+		<!-- ------------------------- MESSAGE SECTION STARTS HERE ------------------------- -->	
+	<!-- ------------------------- MESSAGE SECTION STARTS HERE ------------------------- -->
+		
+		<div id="rightPanMessage" style="display:none;" class="rightPan">
+			<h1>Inbox</h1>
+				<div id="message" class="messageDetails">
+				<table width="100%">
+				<tr>
+				<td>User 1 </td></tr>
+				<tr><td>User 2 </td></tr>
+				<tr><td>User 3 </td>
+				</tr>	
+				</table>
+				</div>
+		</div>
+		
+		<!-- ------------------------- TICKER SECTION STARTS HERE ------------------------- -->	
+	<!-- ------------------------- TICKER SECTION STARTS HERE ------------------------- -->
+			<div style="float:left;width:220px;" class="ticker">
+					<p>Harrypotter has been added to the Wishlist by user 1</p>
+					<p>Headfirst sql has been added to the Wishlist by user 2</p>
+					<p>Oracle handbook has been added to the Ownlist by user 1</p>
+					<p>Mein Kamf has been added to the OwnList by user 3</p>
+					<p>God Father has been added to the Wishlist by user 3</p>
+			</div>
 	</div>
+	
+	
+	
 </body>
 </html>
