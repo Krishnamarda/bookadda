@@ -20,6 +20,13 @@
 	</listener-class>
 </listener>
 
+<listener>
+	<listener-class>
+		com.ba.listner.LoadStatic
+	</listener-class>
+	
+</listener>
+
 <filter>
         <filter-name>struts2</filter-name>
         <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -31,7 +38,6 @@
     </filter-mapping>
 
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
@@ -46,5 +52,11 @@
 		<env-entry-name>param/RegisterDAO</env-entry-name>
 		<env-entry-type>java.lang.String</env-entry-type>
 		<env-entry-value>com.ba.dao.impl.RegisterDAO</env-entry-value>
+	</env-entry>
+	
+	<env-entry>
+		<env-entry-name>param/LoginDAO</env-entry-name>
+		<env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>com.ba.dao.impl.LoginDAO</env-entry-value>
 	</env-entry>
 </web-app>
