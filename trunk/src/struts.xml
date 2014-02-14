@@ -5,33 +5,51 @@
 
 <struts>
 
-    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
-	
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 
-    <package name="default" namespace="/" extends="struts-default">
+
+	<package name="default" namespace="/" extends="struts-default">
 		<result-types>
-         <result-type name="tiles" 
-         class="org.apache.struts2.views.tiles.TilesResult" />
-      </result-types>
-        <default-action-ref name="index" />
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		<default-action-ref name="index" />
 
-        <global-results>
-            <result name="error">/error.jsp</result>
-        </global-results>
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
 
-        <global-exception-mappings>
-            <exception-mapping exception="java.lang.Exception" result="error"/>
-        </global-exception-mappings>
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception"
+				result="error" />
+		</global-exception-mappings>
 
-         <action name="doLogin" class="com.ba.action.LoginAction">
-            <result name="success" type="tiles">userHome</result>
-        </action>
-        <action name="doRegister" class="com.ba.action.RegisterAction">
-     	    
-       		 <result name="success" type="tiles">userHome</result>
-</action>
-    </package>
+		<action name="doLogin" class="com.ba.action.LoginAction">
+			<result name="success" >/jsp/UserHome.jsp</result>
+			<result name="error" type="redirect">/index.jsp</result>
+		</action>
+		<action name="doRegister" class="com.ba.action.RegisterAction">
+			<result name="success"  type="redirect">doLogin</result>
+		</action>
+		
+		<action name="profileAction" class="com.ba.action.ProfileAction">
+			<result name="success">/jsp/Profile.jsp</result>
+			<result name="loggedOut" type="redirect">/index.jsp</result>
+		</action>
+		
+		<action name="loadStates" class="com.ba.action.LoadStates">
+			<result name="success">/jsp/States.jsp</result>
+		</action>
+		
+		<action name="logout" class="com.ba.action.LogoutAction">
+			<result name="success" type="redirect">/index.jsp</result>
+		</action>
+		
+		<action name="homeAction" class="com.ba.action.HomeAction">
+			<result name="success" type="redirect">/jsp/Home.jsp</result>
+		</action>
+	</package>
 
-    <!-- Add packages here -->
+	<!-- Add packages here -->
 
 </struts>
