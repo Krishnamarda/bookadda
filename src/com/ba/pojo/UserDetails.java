@@ -3,8 +3,14 @@ package com.ba.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDetails {
+import org.apache.struts2.dispatcher.SessionMap;
 
+public class UserDetails{
+
+	private String fname;
+	private String lname;
+	private String email;
+	
 	List wishList = new ArrayList();
 	List ownList = new ArrayList();
 	List itemsAvailable = new ArrayList();
@@ -45,6 +51,24 @@ public class UserDetails {
 		}else{
 			return ud;
 		}
+	}
+	public String getFname() {
+		return fname;
+	}
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+	public String getLname() {
+		return lname;
+	}
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }
