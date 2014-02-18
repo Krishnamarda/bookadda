@@ -6,12 +6,16 @@ import com.ba.constants.Constants;
 import com.ba.dao.impl.LoginDAO;
 import com.ba.exception.BAException;
 import com.ba.factory.GenericFactory;
+import com.ba.pojo.UserDetails;
 import com.opensymphony.xwork2.ActionContext;
 
 public class LoginAction {
 
 	private String username;
 	private String password;
+	private UserDetails ud;
+	private String loginError = Constants.TRUE;
+	private String loginType = Constants.LOGIN;
 
 	/**
 	 * @return the username
@@ -44,25 +48,42 @@ public class LoginAction {
 	}
 
 	public String execute() throws Exception {
-		/*try {
+		try {
+			Map<String, Object> session = ActionContext.getContext()
+					.getSession();
+			if (session.get(Constants.USERNAME) != null) {
+				loginType = Constants.REGISTER;
+				username=(String)session.get(Constants.USERNAME);
+			}
 			LoginDAO dao = (LoginDAO) GenericFactory
 					.buildObject(Constants.LOGIN_DAO);
-			dao.userLogin(username, password);
+			ud = dao.userLogin(username, password, loginType);
+			if (ud != null) {
+				if (session.get(Constants.USERNAME) == null) {
+					session.put(Constants.USERNAME, getUsername());
+				}
+				loginError = Constants.FALSE;
+			} else {
+				return Constants.LOGIN_ERROR;
+			}
 		} catch (BAException e) {
 			System.out.println(e);
-		}*/
-		if(getUsername() == null){
-			return "logout";
 		}
-		Map<String, Object> session = ActionContext.getContext().getSession();
-		if(session.get("username")!=null){
-			return Constants.SUCCESS;
-		}else{
-			session.put("username", getUsername());	
-		}
-		
 		return Constants.SUCCESS;
-		
+	}
+
+	public UserDetails getUd() {
+		return ud;
+	}
+	public void setUd(UserDetails ud) {
+		this.ud=ud;
+	}
+	public String getLoginError() {
+		return loginError;
+	}
+
+	public void setLoginError(String loginError) {
+		this.loginError = loginError;
 	}
 
 }
