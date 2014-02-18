@@ -46,7 +46,6 @@ if(password.value.trim().length<8){
 	return false;
 }
 
-document.forms[1].submit();
 
 }
 
