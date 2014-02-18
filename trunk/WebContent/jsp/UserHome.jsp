@@ -1,12 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
- <% response.setHeader("Cache-Control","no-cache"); //HTTP 1.1 
- response.setHeader("Pragma","no-cache"); //HTTP 1.0 
- response.setDateHeader ("Expires", 0); //prevents caching at the proxy server  
-%>
-
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/rightPanStyles.css">
+<link rel="stylesheet" type="text/css" href="css/rightPanStyles.css" >
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
@@ -44,6 +40,8 @@ function ticker() {
 setInterval(ticker, 5000);
 
 function setAction(linkNum) {
+	var val = $(".leftPanList").children();
+	
 	if (linkNum == 5) {
 		document.forms[0].action='logout';
 		document.forms[0].submit();
@@ -52,7 +50,9 @@ function setAction(linkNum) {
 	var menuLen = menu.length;
 	for ( var i = 0; i < menuLen; i++) {
 		document.getElementById(menu[i]).style.display = 'none';
+		$(val[i]).removeClass("selectedTab");
 	}
+	$(val[linkNum]).addClass("selectedTab");
 	document.getElementById(menu[linkNum]).style.display = 'block';
 	if (linkNum == 1) {
 		$.ajax({url:"profileAction",success:function(result){
@@ -62,6 +62,8 @@ function setAction(linkNum) {
 				return;
 			}
 			$("#rightPanProfile").html(result);
+			
+			
 		  }});
 	}
 	
@@ -160,13 +162,17 @@ width:350px;
 	list-style-type: none;
 	padding: 15px 20px 20px 0px;
 	font-family: 'Bree Serif', serif;
-	font-weight: 300;
 	font-size: 18px;
 	
 }
 
-.leftPanList li:hover {
+.selectedTab{
 background : #FEEF90;
+font-weight: bold;
+}
+
+.leftPanList li:hover {
+background : #FEFF90;
 cursor: pointer;
 	
 }
@@ -257,7 +263,9 @@ font-family: 'Bree Serif', serif;
 </style>
 </head>
 <body class="body">
-<form></form>
+
+<form>	
+<s:bean name="com.ba.pojo.UserDetails" var="ud" />
 	<div id="mainContainer">
 		<div id="header">
 			<!-- <div class="home"><img src="images/home.png"  class="home"></div> -->
@@ -269,6 +277,8 @@ font-family: 'Bree Serif', serif;
 			<div id="searchButton">
 				<input type="button" name="button" value="Search" class="button" />
 			</div>
+		
+			<div>Welcome, <s:property value="#ud.fname"/> </div>
 		</div>
 		<div id="leftPan">
 			<div class="DP">
@@ -276,7 +286,7 @@ font-family: 'Bree Serif', serif;
 			</div>
 			<div class="leftPanContent">
 				<ul class="leftPanList">
-					<li onclick="setAction(0);">Home</li>
+					<li onclick="setAction(0);" class="selectedTab">Home</li>
 					<li onclick="setAction(1);">Profile</li>
 					<li onclick="setAction(2);">My Wishlist</li>
 					<li onclick="setAction(3);">My OwnList</li>
@@ -287,20 +297,14 @@ font-family: 'Bree Serif', serif;
 		</div>
 		
 	<!-- ------------------------- HOME SECTION STARTS HERE ------------------------- -->	
-	<!-- ------------------------- HOME SECTION STARTS HERE ------------------------- -->
 	
-		<div id="rightPanHome" class="rightPan">
-			
-		</div>
+		<div id="rightPanHome" class="rightPan"></div>
 		
 	<!-- ------------------------- PROFILE SECTION STARTS HERE ------------------------- -->	
-	<!-- ------------------------- PROFILE SECTION STARTS HERE ------------------------- -->	
 	
-		<div id="rightPanProfile" style="display:none;" class="rightPan">
-		</div>
+		<div id="rightPanProfile" style="display:none;" class="rightPan"></div>
 		
 	<!-- ------------------------- WISHLIST SECTION STARTS HERE ------------------------- -->	
-	<!-- ------------------------- WISHLIST SECTION STARTS HERE ------------------------- -->
 		
 		<div id="rightPanWishList" style="display:none;" class="rightPan">
 			<h1>WishList</h1>
@@ -320,7 +324,6 @@ font-family: 'Bree Serif', serif;
 		
 		
 	<!-- ------------------------- OWNLIST SECTION STARTS HERE ------------------------- -->	
-	<!-- ------------------------- OWNLIST SECTION STARTS HERE ------------------------- -->
 		
 		<div id="rightPanOwnList" style="display:none;" class="rightPan">
 			<h1>WishList</h1>
@@ -338,7 +341,6 @@ font-family: 'Bree Serif', serif;
 		</div>
 		
 		<!-- ------------------------- MESSAGE SECTION STARTS HERE ------------------------- -->	
-	<!-- ------------------------- MESSAGE SECTION STARTS HERE ------------------------- -->
 		
 		<div id="rightPanMessage" style="display:none;" class="rightPan">
 			<h1>Inbox</h1>
@@ -354,7 +356,6 @@ font-family: 'Bree Serif', serif;
 		</div>
 		
 		<!-- ------------------------- TICKER SECTION STARTS HERE ------------------------- -->	
-	<!-- ------------------------- TICKER SECTION STARTS HERE ------------------------- -->
 			<div  class="ticker">
 					<p>Harrypotter has been added to the Wishlist by user 1</p>
 					<p>Headfirst sql has been added to the Wishlist by user 2</p>
@@ -365,7 +366,7 @@ font-family: 'Bree Serif', serif;
 			
 	</div>
 	
-	
+	</form>
 	
 </body>
 </html>

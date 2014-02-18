@@ -1,8 +1,8 @@
 <html>
 <head>
 <script>
-var panel1="#1";
-  $(".rightPanHomeItem").click(function(){
+var panel1="#h1";
+  $(".rightPanItem").click(function(){
      var temp='#'+$(this).next().attr('id');
      if((panel1!='' || panel1!='undefined' )&& panel1!=temp){
     		 $(panel1).slideUp();
@@ -12,14 +12,13 @@ var panel1="#1";
      
   });
  </script>
+
 </head>
-
-
 <h1>Books available near your address</h1>
 			<ul class="rightPanList">
 			<li>
-				<div  class="rightPanHomeItem">Harry Potter</div>
-				<div id="1" class="bookDesc" style="display : none;">
+				<div  class="rightPanItem">Harry Potter</div>
+				<div id="h1" class="bookDesc">
 				<table width="100%">
 					<tr>
 						<td>User-1</td>
@@ -35,8 +34,8 @@ var panel1="#1";
 				</div>
 			</li>
 			<li>
-				<div class="rightPanHomeItem">Shiva Triology - Oath of vayuputra</div>
-				<div id="2" class="bookDesc" style="display : none;">
+				<div class="rightPanItem">Shiva Triology - Oath of vayuputra</div>
+				<div id="h2" class="bookDesc" style="display : none;">
 				<table width="100%">
 					<tr>
 						<td>User-1</td>
@@ -52,5 +51,4 @@ var panel1="#1";
 				</div>
 			</li>
 			</ul>
-
 </html>
