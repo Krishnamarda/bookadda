@@ -25,7 +25,7 @@
 	float: left
 }
 
-.rightPanProfileList li {
+.rightPanList li {
 	padding: 15px 20px 20px 0px;
 	font-family: 'Bree Serif', serif;
 	font-weight: 300;
@@ -33,7 +33,7 @@
 	
 }
 
-.rightPanProfileList li:hover {
+.rightPanList li:hover {
 /* background : #FEEF90; */
 text-decoration: underline;
 }
@@ -88,7 +88,7 @@ color:  #999966;
 border-bottom: 1px solid silver;
 }
 
-.rightPanProfileItem{
+.rightPanItem{
 font-family: 'Bree Serif', serif;
 	font-weight: 300;
 	font-size: 25px;
