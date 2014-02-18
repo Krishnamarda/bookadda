@@ -6,52 +6,40 @@ import java.util.List;
 import org.apache.struts2.dispatcher.SessionMap;
 
 public class UserDetails{
-
+	
+	private String email;
 	private String fname;
 	private String lname;
-	private String email;
+	private String gender;
+	private String wishlist_id;
+	private String ownlist_id;
+	private String inst_id;
 	
-	List wishList = new ArrayList();
-	List ownList = new ArrayList();
-	List itemsAvailable = new ArrayList();
-	List searchHistory = new ArrayList();
 	
-	public List getWishList() {
+	List<Wishlist> wishList = new ArrayList<Wishlist>();
+	List<Ownlist> ownList = new ArrayList<Ownlist>();
+	List<String> searchHistory = new ArrayList<String>();
+	
+	public List<Wishlist> getWishList() {
 		return wishList;
 	}
-	public void setWishList(List wishList) {
+	public void setWishList(List<Wishlist> wishList) {
 		this.wishList = wishList;
 	}
-	public List getOwnList() {
+	public List<Ownlist> getOwnList() {
 		return ownList;
 	}
-	public void setOwnList(List ownList) {
+	public void setOwnList(List<Ownlist> ownList) {
 		this.ownList = ownList;
 	}
-	public List getItemsAvailable() {
-		return itemsAvailable;
-	}
-	public void setItemsAvailable(List itemsAvailable) {
-		this.itemsAvailable = itemsAvailable;
-	}
-	public List getSearchHistory() {
+	
+	public List<String> getSearchHistory() {
 		return searchHistory;
 	}
-	public void setSearchHistory(List searchHistory) {
+	public void setSearchHistory(List<String> searchHistory) {
 		this.searchHistory = searchHistory;
 	}
-	static UserDetails ud = null;
-	private UserDetails(){
-		
-	}
 	
-	public static UserDetails getInstance(){
-		if(ud==null){
-			return new UserDetails();
-		}else{
-			return ud;
-		}
-	}
 	public String getFname() {
 		return fname;
 	}
@@ -70,5 +58,42 @@ public class UserDetails{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	
+	
+	private static UserDetails ud = null;
+	private UserDetails(){
+		
+	}
+	
+	public static UserDetails getInstance(){
+		if(ud==null){
+			return new UserDetails();
+		}else{
+			return ud;
+		}
+	}
+	public String getWishlist_id() {
+		return wishlist_id;
+	}
+	public void setWishlist_id(String wishlist_id) {
+		this.wishlist_id = wishlist_id;
+	}
+	public String getOwnlist_id() {
+		return ownlist_id;
+	}
+	public void setOwnlist_id(String ownlist_id) {
+		this.ownlist_id = ownlist_id;
+	}
+	public String getInst_id() {
+		return inst_id;
+	}
+	public void setInst_id(String inst_id) {
+		this.inst_id = inst_id;
+	}
 }
