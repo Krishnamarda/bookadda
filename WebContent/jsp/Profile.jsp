@@ -1,14 +1,14 @@
 <html>
 <head>
 <script>
-var panel1="#1";
-  $(".rightPanProfileItem").click(function(){
+var panel2="#p1";
+  $(".rightPanItem").click(function(){
      var temp='#'+$(this).next().attr('id');
-     if((panel1!='' || panel1!='undefined' )&& panel1!=temp){
-    		 $(panel1).slideUp();
+     if((panel2!='' || panel2!='undefined' )&& panel2!=temp){
+    		 $(panel2).slideUp();
      }
      $(this).next().toggle("fast");
-     panel1=temp;
+     panel2=temp;
      
   });
 
@@ -25,10 +25,10 @@ $('#country').change(function(){
 </head>
 
 			<h1>Profile</h1>
-			<ul class="rightPanProfileList">
+			<ul class="rightPanList">
 			<li>
-				<div class="rightPanProfileItem">Pesonal Details</div>
-				<div id="1" class="personalDetails">
+				<div class="rightPanItem">Pesonal Details</div>
+				<div id="p1" class="personalDetails">
 				<table width="100%">
 					<tr>
 						<td>First Name</td>
@@ -55,8 +55,8 @@ $('#country').change(function(){
 				</div>
 			</li>
 			<li>
-				<div class="rightPanProfileItem">Institution Details</div>
-				<div id="2" class="rAddressDetails" style="display : none;">
+				<div class="rightPanItem">Institution Details</div>
+				<div id="p2" class="rAddressDetails" style="display : none;">
 				<table width="100%">
 					<!-- <tr>
 						<td>Working&nbsp;<input type="radio" name="occ" value="work"></td>
