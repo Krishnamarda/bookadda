@@ -26,27 +26,43 @@
 
 		<action name="doLogin" class="com.ba.action.LoginAction">
 			<result name="success" >/jsp/UserHome.jsp</result>
-			<result name="error" type="redirect">/index.jsp</result>
+			<result name="loginError">/</result>
 		</action>
 		<action name="doRegister" class="com.ba.action.RegisterAction">
 			<result name="success"  type="redirect">doLogin</result>
+			<result name="duplciateUser">/</result>
 		</action>
 		
 		<action name="profileAction" class="com.ba.action.ProfileAction">
 			<result name="success">/jsp/Profile.jsp</result>
-			<result name="loggedOut" type="redirect">/index.jsp</result>
 		</action>
 		
-		<action name="loadStates" class="com.ba.action.LoadStates">
-			<result name="success">/jsp/States.jsp</result>
+		<action name="homeAction" class="com.ba.action.HomeAction">
+			<result name="success">/jsp/Home.jsp</result>
+		</action>
+		
+		<action name="wishListAction" class="com.ba.action.WishListAction">
+			<result name="success">/jsp/WishList.jsp</result>
+		</action>
+		
+		<action name="ownListAction" class="com.ba.action.OwnListAction">
+			<result name="success">/jsp/OwnList.jsp</result>
 		</action>
 		
 		<action name="logout" class="com.ba.action.LogoutAction">
 			<result name="success" type="redirect">/index.jsp</result>
 		</action>
 		
-		<action name="homeAction" class="com.ba.action.HomeAction">
-			<result name="success" type="redirect">/jsp/Home.jsp</result>
+		<action name="loadStates" class="com.ba.action.LoadStates">
+			<result name="success">/jsp/States.jsp</result>
+		</action>
+		
+		<action name="addOwnAction" class="com.ba.action.AddOwnAction">
+			<result name="success">/jsp/Result.jsp</result>
+		</action>
+		
+		<action name="addWishAction" class="com.ba.action.AddWishAction">
+			<result name="success">/jsp/Result.jsp</result>
 		</action>
 	</package>
 
