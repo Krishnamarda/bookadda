@@ -28,8 +28,8 @@
 			<div class="content">
 				<div id="toolTipDiv1" class="idleToolTip"></div>
 				<s:if test="%{#loginVal=='true'}"><div id="loginError" style="color: red;">Invalid Credentials.</div></s:if>
-				<input name="username" type="text" class="input" placeholder="Email" onfocus="resetFeild(this);"/>
-				<input name="password" type="password" class="input" placeholder="Password" onfocus="resetFeild(this);"/>
+				<input name="username" type="text" class="input" placeholder="Email" onfocus="resetFeild(this);" id=""/>
+				<input name="password" type="password" class="input" placeholder="Password" onfocus="resetFeild(this);" id=""/>
 			</div>
 
 			<div class="footer">
@@ -47,10 +47,10 @@
 			<div class="content">
 			<div id="toolTipDiv2" class="idleToolTip"></div>
 			<s:if test="%{#regVal=='true'}"><div id="regError" style="color: red;">This email is already registered.</div></s:if>
-			<input name="rb.fname" type="text" class="input" placeholder="First Name" onfocus="resetFeild(this);"/>
-			<input name="rb.lname" type="text" class="input" placeholder="Last Name" onfocus="resetFeild(this);"/>
-			<input name="rb.email" type="text" class="input" placeholder="Email" onfocus="resetFeild(this);" />
-			<input name="rb.password" type="password" class="input" placeholder="Password" onfocus="resetFeild(this);" />
+			<input name="rb.fname" type="text" class="input" placeholder="First Name" onfocus="resetFeild(this);" id=""/>
+			<input name="rb.lname" type="text" class="input" placeholder="Last Name" onfocus="resetFeild(this);" id=""/>
+			<input name="rb.email" type="text" class="input" placeholder="Email" onfocus="resetFeild(this);" id=""/>
+			<input name="rb.password" type="password" class="input" placeholder="Password" onfocus="resetFeild(this);" id="" />
 			</div>
 
 			<div class="footer">
