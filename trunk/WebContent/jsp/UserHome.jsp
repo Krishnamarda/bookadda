@@ -54,6 +54,18 @@ function setAction(linkNum) {
 	}
 	$(val[linkNum]).addClass("selectedTab");
 	document.getElementById(menu[linkNum]).style.display = 'block';
+	
+	if(linkNum == 0){
+		$.ajax({url:"homeAction",success:function(result){
+			if(result==null || result==''){
+				document.forms[0].action='logout';
+				document.forms[0].submit();
+				return;
+			}
+			$("#rightPanHome").html(result);
+		  }});
+	}
+	
 	if (linkNum == 1) {
 		$.ajax({url:"profileAction",success:function(result){
 			if(result==null || result==''){
@@ -67,18 +79,27 @@ function setAction(linkNum) {
 		  }});
 	}
 	
-	if(linkNum == 0){
-		$.ajax({url:"homeAction",success:function(result){
+	if(linkNum == 2){
+		$.ajax({url:"wishListAction",success:function(result){
 			if(result==null || result==''){
 				document.forms[0].action='logout';
 				document.forms[0].submit();
 				return;
 			}
-			$("#rightPanHome").html(result);
+			$("#rightPanWishList").html(result);
 		  }});
 	}
 	
-	
+	if(linkNum == 3){
+		$.ajax({url:"ownListAction",success:function(result){
+			if(result==null || result==''){
+				document.forms[0].action='logout';
+				document.forms[0].submit();
+				return;
+			}
+			$("#rightPanOwnList").html(result);
+		  }});
+	}
 }
 
 
@@ -160,19 +181,22 @@ width:350px;
 
 .leftPanList li {
 	list-style-type: none;
-	padding: 15px 20px 20px 0px;
+	 padding: 15px 0px 15px 5px;
 	font-family: 'Bree Serif', serif;
 	font-size: 18px;
-	
+	margin-top :5px;
 }
 
 .selectedTab{
-background : #FEEF90;
+background :#CC3300;
 font-weight: bold;
 }
 
+
 .leftPanList li:hover {
-background : #FEFF90;
+/*background : #FEFF90;*/
+background : #CC3300;
+color : white;
 cursor: pointer;
 	
 }
@@ -194,7 +218,6 @@ text-decoration: underline;
 .button {
 	float:left;
 	padding: 9px 15px;
-	
 	font-family: 'Bree Serif', serif;
 	font-weight: 300;
 	font-size: 18px;
@@ -306,39 +329,12 @@ font-family: 'Bree Serif', serif;
 		
 	<!-- ------------------------- WISHLIST SECTION STARTS HERE ------------------------- -->	
 		
-		<div id="rightPanWishList" style="display:none;" class="rightPan">
-			<h1>WishList</h1>
-				<div>
-				<p>Add books that you don't have and wish to exchange/borrow from other users who work in your company
-				or study in your school/college or reside in the same locality/building.</p>
-				</div>
-				<div id="wishlist" class="wishListDetails">
-				<table width="100%">
-					<tr>
-						<td><input type="text" class="input"/></td>
-						<td><input type="button" value="Add" class="button"></td>
-					</tr>
-				</table>
-				</div>
-		</div>
+		<div id="rightPanWishList" style="display:none;" class="rightPan"></div>
 		
 		
 	<!-- ------------------------- OWNLIST SECTION STARTS HERE ------------------------- -->	
 		
-		<div id="rightPanOwnList" style="display:none;" class="rightPan">
-			<h1>WishList</h1>
-				<div>
-				<p>Add books that you have and wish to exchange/lend to other users.</p>
-				</div>
-				<div id="wishlist" class="wishListDetails">
-				<table width="100%">
-					<tr>
-						<td><input type="text" class="input"/></td>
-						<td><input type="button" value="Add" class="button"></td>
-					</tr>
-				</table>
-				</div>
-		</div>
+		<div id="rightPanOwnList" style="display:none;" class="rightPan"></div>
 		
 		<!-- ------------------------- MESSAGE SECTION STARTS HERE ------------------------- -->	
 		
