@@ -37,7 +37,7 @@ public class LoginDAO extends ConnectionFactory {
 			
 			rSet = pStmt.executeQuery();
 			if (rSet.next()) {
-				ud = UserDetails.getInstance();
+				ud = new UserDetails();
 				ud.setEmail(rSet.getString(colCount++));
 				ud.setFname(rSet.getString(colCount++));
 				ud.setLname(rSet.getString(colCount++));
@@ -69,12 +69,13 @@ public class LoginDAO extends ConnectionFactory {
 
 			while (rSet.next()) {
 				Wishlist wl = new Wishlist();
-				wl.setWishlist_id(rSet.getString(colCount));
-				wl.setBook_name(rSet.getString(colCount));
-				wl.setAuthor(rSet.getString(colCount));
-				wl.setWishtype(rSet.getString(colCount));
-				wl.setQuantity(rSet.getInt(colCount));
+				wl.setWishlist_id(rSet.getString(colCount++));
+				wl.setBook_name(rSet.getString(colCount++));
+				wl.setAuthor(rSet.getString(colCount++));
+				wl.setWishtype(rSet.getString(colCount++));
+				wl.setQuantity(rSet.getInt(colCount++));
 				wishlist.add(wl);
+				colCount = 1;
 			}
 		} catch (SQLException sqle) {
 			throw new BAException(sqle,
@@ -94,12 +95,13 @@ public class LoginDAO extends ConnectionFactory {
 
 			while (rSet.next()) {
 				Ownlist ol = new Ownlist();
-				ol.setOwnlist_id(rSet.getString(colCount));
-				ol.setBook_name(rSet.getString(colCount));
-				ol.setAuthor(rSet.getString(colCount));
-				ol.setAvailtype(rSet.getString(colCount));
-				ol.setQuantity(rSet.getInt(colCount));
+				ol.setOwnlist_id(rSet.getString(colCount++));
+				ol.setBook_name(rSet.getString(colCount++));
+				ol.setAuthor(rSet.getString(colCount++));
+				ol.setAvailtype(rSet.getString(colCount++));
+				ol.setQuantity(rSet.getInt(colCount++));
 				ownlist.add(ol);
+				colCount = 1;
 			}
 		} catch (SQLException sqle) {
 			throw new BAException(sqle,
