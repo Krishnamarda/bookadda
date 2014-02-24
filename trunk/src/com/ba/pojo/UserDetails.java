@@ -16,9 +16,9 @@ public class UserDetails{
 	private String inst_id;
 	
 	
-	List<Wishlist> wishList = new ArrayList<Wishlist>();
-	List<Ownlist> ownList = new ArrayList<Ownlist>();
-	List<String> searchHistory = new ArrayList<String>();
+	private List<Wishlist> wishList = new ArrayList<Wishlist>();
+	private List<Ownlist> ownList = new ArrayList<Ownlist>();
+	private List<String> searchHistory = new ArrayList<String>();
 	
 	public List<Wishlist> getWishList() {
 		return wishList;
@@ -66,18 +66,18 @@ public class UserDetails{
 	}
 	
 	
-	private static UserDetails ud = null;
+	/*private static UserDetails userDetails = null;
 	private UserDetails(){
 		
 	}
 	
 	public static UserDetails getInstance(){
-		if(ud==null){
+		if(userDetails==null){
 			return new UserDetails();
 		}else{
-			return ud;
+			return userDetails;
 		}
-	}
+	}*/
 	public String getWishlist_id() {
 		return wishlist_id;
 	}
