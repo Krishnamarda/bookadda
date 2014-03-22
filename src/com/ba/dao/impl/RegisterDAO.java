@@ -18,7 +18,7 @@ public class RegisterDAO extends ConnectionFactory {
 		Connection con = null;
 		PreparedStatement pStmt = null;
 		int colCount=1;
-		UserDetails ud = UserDetails.getInstance();
+		UserDetails ud = new UserDetails();
 		String isUserDuplicate = Constants.FALSE;
 		try {
 			con = getConnection(Constants.DATASOURCE);

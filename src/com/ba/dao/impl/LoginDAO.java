@@ -51,7 +51,7 @@ public class LoginDAO extends ConnectionFactory {
 
 		} catch (SQLException sqle) {
 			throw new BAException(sqle,
-					"Exception caught in UserDetails.userLogin()");
+					"Exception caught in LoginDAO.userLogin()");
 		}
 
 		return ud;
