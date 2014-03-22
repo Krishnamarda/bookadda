@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
 <script>
@@ -16,39 +17,27 @@ var panel1="#h1";
 </head>
 <h1>Books available near your address</h1>
 			<ul class="rightPanList">
+			<s:iterator value="homeData" status="hDStatus" >
 			<li>
-				<div  class="rightPanItem">Harry Potter</div>
-				<div id="h1" class="bookDesc">
+				<div  class="rightPanItem"><s:property value="ownlist_id"/></div>
+				<s:div  cssClass="bookDesc" id="divId%{#hDStatus.count}">
 				<table width="100%">
 					<tr>
-						<td>User-1</td>
-						<td>Pimple Saudagar, Kunal Icon</td>
-						<td align="right"><a href="#">Leave a message</a></td>
+					<td><b>Book</b></td>
+					<td><b>Author</b></td>
+					<td><b>Available Type</b></td>
+					<td><b>Quantity</b></td>
 					</tr>
 					<tr>
-						<td>User-2</td>
-						<td>Infosys Phase2</td>
+						<td><s:property value="book_name"/></td>
+						<td><s:property value="author"/></td>
+						<td><s:property value="availtype"/></td>
+						 <td><s:property value="quantity"/> </td>
 						<td align="right"><a href="#">Leave a message</a></td>
 					</tr>
 				</table>
-				</div>
+			</s:div>
 			</li>
-			<li>
-				<div class="rightPanItem">Shiva Triology - Oath of vayuputra</div>
-				<div id="h2" class="bookDesc" style="display : none;">
-				<table width="100%">
-					<tr>
-						<td>User-1</td>
-						<td>Pimple Saudagar, Kunal Icon</td>
-						<td align="right"><a href="#">Leave a message</a></td>
-					</tr>
-					<tr>
-						<td>User-2</td>
-						<td>Infosys Phase2</td>
-						<td align="right"><a href="#">Leave a message</a></td>
-					</tr>
-				</table>
-				</div>
-			</li>
+			</s:iterator>
 			</ul>
 </html>
