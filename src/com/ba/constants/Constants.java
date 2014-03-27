@@ -11,6 +11,8 @@ public class Constants {
 	public static String FALSE = "false";
 	public static String USERNAME = "username";
 	public static String DUPLICATE = "duplicate";
+	public static String WISHLIST_ID = "wishlistID";
+	public static String OWNLIST_ID = "ownlistID";
 	public static String DUPLICATE_USER_REGISTRATION = "duplciateUser";
 
 	// Context params
@@ -18,14 +20,14 @@ public class Constants {
 	public static String REGISTER_DAO = "java:comp/env/param/RegisterDAO";
 	public static String LOGIN_DAO = "java:comp/env/param/LoginDAO";
 	public static String HOME_DAO = "java:comp/env/param/HomeDAO";
-	public static String ADD_OWN_DAO = "java:comp/env/param/AddOwnDAO";
-	public static String ADD_WISH_DAO = "java:comp/env/param/AddWishDAO";
+	public static String OWNLIST_DAO = "java:comp/env/param/OwnListDAO";
+	public static String WISHLIST_DAO = "java:comp/env/param/WishListDAO";
 
 	// Stored Procedures, Functions and SQLs
 	public static String REGISTER_USER = "insert into user_info values (?,?,?,?,?,?,?,?,?,?)";
 	public static String DUPLICATE_USER_CHECK = "select 1 from user_info where UPPER(email) = UPPER(?)";
-	public static String LOGIN_USER_1 = "select email, fname, lname, gender, wishlist_id, ownlist_id, inst_id from user_info where email=? and password=?";
-	public static String LOGIN_USER_2 = "select email, fname, lname, gender, wishlist_id, ownlist_id, inst_id from user_info where email=?";
+	public static String LOGIN_USER_1 = "select email, fname, lname, gender, inst_id from user_info where email=? and password=?";
+	public static String LOGIN_USER_2 = "select email, fname, lname, gender, inst_id from user_info where email=?";
 	public static String GET_HOME_DATA = "select * from ownlist where ownlist_id in" +
 			"(select email from user_info where inst_id = " +
 			"(select inst_id from user_info  where email=?) and email <> ?) ";
