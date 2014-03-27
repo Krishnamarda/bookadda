@@ -61,6 +61,8 @@ public class LoginAction {
 			if (ud != null) {
 				if (session.get(Constants.USERNAME) == null) {
 					session.put(Constants.USERNAME, getUsername());
+					session.put(Constants.WISHLIST_ID, ud.getWishlist_id());
+					session.put(Constants.OWNLIST_ID, ud.getOwnlist_id());
 				}
 				loginError = Constants.FALSE;
 			} else {

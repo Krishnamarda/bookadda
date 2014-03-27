@@ -3,7 +3,7 @@ package com.ba.action;
 import java.util.Map;
 
 import com.ba.constants.Constants;
-import com.ba.dao.impl.AddOwnDAO;
+import com.ba.dao.impl.OwnListDAO;
 import com.ba.exception.BAException;
 import com.ba.factory.GenericFactory;
 import com.opensymphony.xwork2.ActionContext;
@@ -22,8 +22,8 @@ public class AddOwnAction {
 			return null;
 		}
 		try {
-			AddOwnDAO dao = (AddOwnDAO) GenericFactory
-					.buildObject(Constants.ADD_OWN_DAO);
+			OwnListDAO dao = (OwnListDAO) GenericFactory
+					.buildObject(Constants.OWNLIST_DAO);
 			dao.addOwnList(unm, bookName, author, availType, quantity);
 		} catch (BAException e) {
 			System.out.println(e);
