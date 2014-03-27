@@ -282,7 +282,14 @@ font-family: 'Bree Serif', serif;
 	cursor : pointer;
 }
 
-
+#welcomeUser{
+font-family: 'Bree Serif', serif;
+font-size: 20px;
+float:right;
+padding:13px 30px 13px 30px; 
+background:grey;
+color:white;
+}
 </style>
 </head>
 <body class="body">
@@ -301,7 +308,7 @@ font-family: 'Bree Serif', serif;
 				<input type="button" name="button" value="Search" class="button" />
 			</div>
 		
-			<div>Welcome, <s:property value="#ud.fname"/> </div>
+			<div id="welcomeUser">Welcome, <s:property value="ud.fname"/> </div>
 		</div>
 		<div id="leftPan">
 			<div class="DP">

@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
 <script>
@@ -60,6 +61,24 @@
 		
 		return true;
 	}
+	
+	function showOwnListAddBox(){
+		document.getElementById('ownlist').style.display='block';
+		document.getElementById('showOwnlist').style.display='none';
+		document.getElementById('ownAddButton').style.display='none';
+		document.getElementById('ownListHeader').style.display='none';
+	}
+	
+	function viewOwnList(){
+			$.ajax({url:"ownListAction",success:function(result){
+				if(result==null || result==''){
+					document.forms[0].action='logout';
+					document.forms[0].submit();
+					return;
+				}
+				$("#rightPanOwnList").html(result);
+			  }});
+	}
 </script>
 <style>
 .faddingMessage {
@@ -74,14 +93,52 @@
 	text-align: center;
 	padding-top:10px;
 }
+td{
+text-align:center;
+ width:25%;
+}
+tr{
+height:30px;
+}
 </style>
 </head>
 <h1>OwnList</h1>
-<div>
-	<p>Add books that you have and wish to exchange/lend to other
-		users.</p>
+ <div>
+	<p style="font-size:18px;padding:0px 5px 0px 5px;">Books in your Ownlist are those which you already have, and you wish to exchange/lend to other
+		users who work in your company or study in your school/college
+		or reside in the same locality/building.</p>
 </div>
-<div id="ownlist" class="ownListDetails">
+<div style="padding-left:400px;margin-top:-10px;" id="ownAddButton">
+<input type="button" value="Add Books to OwnList" class="button" onclick="showOwnListAddBox()"/>
+</div>
+<table style="width:100%;border-spacing:0px;" id="ownListHeader">
+					<tr style="background:grey;">
+					<td><b>Book</b></td>
+					<td><b>Author</b></td>
+					<td><b>Available Type</b></td>
+					<td><b>Quantity</b></td>
+					</tr>
+</table>
+<div id="showOwnlist" style="height:350px;overflow:auto;border-bottom:1px solid silver;">
+
+<table style="width:100%;border-spacing:0px;">
+			<s:iterator value="ownList" status="hDStatus" >
+				<s:div  cssClass="bookDesc" id="divId%{#hDStatus.count}">
+					<s:if test="#hDStatus.count%2==0">
+					<tr style="background:silver;">
+					</s:if>
+					<s:else><tr></s:else>
+						<td><s:property value="book_name"/></td>
+						<td><s:property value="author"/></td>
+						<td><s:property value="availtype"/></td>
+						 <td><s:property value="quantity"/> </td>
+					</tr>
+			</s:div>
+			</s:iterator>
+			</table>
+</div>
+
+<div id="ownlist" class="ownListDetails" style="display:none;">
 	<form name="OwnListForm" id="OwnListForm" 
 		method="post">
 		<table width="100%">
@@ -96,7 +153,7 @@
 			<tr>
 				<td><Select name="availType" id="availType" class="input"
 					style="width: 240px;">
-						<option value="">Select</option>
+						<option value="">Availability Type</option>
 						<option value="LEND">Lend</option>
 						<option value="EXCHANGE">Exchange</option>
 						<option value="SELL">Sell</option>
@@ -109,7 +166,7 @@
 			</tr>
 			<tr>
 				<td><input type="submit" value="Add" class="button"></td>
-				<td></td>
+				<td><input type="button" value="View OwnList" class="button" onclick="viewOwnList()"></td>
 			</tr>
 		</table>
 		<div id="saveStatus" class="faddingMessage"></div>
