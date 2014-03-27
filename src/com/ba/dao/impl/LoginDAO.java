@@ -38,12 +38,12 @@ public class LoginDAO extends ConnectionFactory {
 			rSet = pStmt.executeQuery();
 			if (rSet.next()) {
 				ud = new UserDetails();
-				ud.setEmail(rSet.getString(colCount++));
+				ud.setEmail(rSet.getString(colCount));
+				ud.setWishlist_id(rSet.getString(colCount));
+				ud.setOwnlist_id(rSet.getString(colCount++));
 				ud.setFname(rSet.getString(colCount++));
 				ud.setLname(rSet.getString(colCount++));
 				ud.setGender(rSet.getString(colCount++));
-				ud.setWishlist_id(rSet.getString(colCount++));
-				ud.setOwnlist_id(rSet.getString(colCount++));
 				ud.setInst_id(rSet.getString(colCount++));
 				ud.setWishList(getWishList(ud.getWishlist_id()));
 				ud.setOwnList(getOwnList(ud.getOwnlist_id()));
