@@ -3,7 +3,7 @@ package com.ba.action;
 import java.util.Map;
 
 import com.ba.constants.Constants;
-import com.ba.dao.impl.AddWishDAO;
+import com.ba.dao.impl.WishListDAO;
 import com.ba.exception.BAException;
 import com.ba.factory.GenericFactory;
 import com.opensymphony.xwork2.ActionContext;
@@ -22,8 +22,8 @@ public class AddWishAction {
 			return null;
 		}
 		try {
-			AddWishDAO dao = (AddWishDAO) GenericFactory
-					.buildObject(Constants.ADD_WISH_DAO);
+			WishListDAO dao = (WishListDAO) GenericFactory
+					.buildObject(Constants.WISHLIST_DAO);
 			dao.addWishList(unm, bookName, author, wishType, quantity);
 		} catch (BAException e) {
 			System.out.println(e);
