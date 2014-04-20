@@ -22,6 +22,7 @@ public class Constants {
 	public static String HOME_DAO = "java:comp/env/param/HomeDAO";
 	public static String OWNLIST_DAO = "java:comp/env/param/OwnListDAO";
 	public static String WISHLIST_DAO = "java:comp/env/param/WishListDAO";
+	public static String PROFILE_DAO = "java:comp/env/param/ProfileDAO";
 
 	// Stored Procedures, Functions and SQLs
 	public static String REGISTER_USER = "insert into user_info values (?,?,?,?,?,?,?,?,?,?)";
@@ -35,5 +36,6 @@ public class Constants {
 	public static String GET_OWN_LIST = "select * from ownlist where ownlist_id=?";
 	public static String ADD_OWN_LIST = "insert into ownlist values (?,?,?,?,?)";
 	public static String ADD_WISH_LIST = "insert into wishlist values (?,?,?,?,?)";
+	public static String GET_PROFILE_DETAIL = "select email, fname, lname, gender, inst_id from user_info where email = ?";
 
 }

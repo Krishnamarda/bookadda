@@ -1,5 +1,34 @@
+<%@ taglib prefix="s" uri="/struts-tags"%>
+
 <html>
 <head>
+
+<style type="text/css">
+h1 {
+	margin-right: 10px;
+	padding-left: 10px;
+}
+
+.input {
+	width: 188px;
+	padding: 11px 25px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
+		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	color: #9d9e9e;
+	text-shadow: 1px 1px 0 rgba(256, 256, 256, 1.0);
+	margin-left: 30px;
+	margin-top: 5px; float : left; background : #fff;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);
+	-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);
+	-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);
+	background: #fff;
+	float: left
+}</style>
+
 <script>
 var panel2="#p1";
   $(".rightPanItem").click(function(){
@@ -23,7 +52,7 @@ $('#country').change(function(){
 </script>
 
 </head>
-
+<s:bean name="com.ba.pojo.UserDetails" var="userDetails" />
 			<h1>Profile</h1>
 			<ul class="rightPanList">
 			<li>
@@ -32,19 +61,19 @@ $('#country').change(function(){
 				<table width="100%">
 					<tr>
 						<td>First Name</td>
-						<td><input type="text" class="input"/></td>
+						<td><s:textfield name="userDetails.fname" cssClass="input"></s:textfield></td>
 					</tr>
 					<tr>
 						<td>Last Name</td>
-						<td><input type="text" class="input"/></td>	
+						<td><s:textfield name="userDetails.lname" cssClass="input"></s:textfield></td>	
 					</tr>
 					<tr>
 						<td>Email</td>
-						<td><input type="text" class="input"/></td>	
+						<td><s:textfield name="userDetails.email" cssClass="input"></s:textfield></td>	
 					</tr>
 					<tr>
 						<td>Password</td>
-						<td><input type="password" class="input"/></td>	
+						<td><input type="password" class="input" disabled="disabled"/></td>	
 					</tr>
 					<tr>
 						<td style="padding:15px 0px 0px 0px;">Gender</td>
