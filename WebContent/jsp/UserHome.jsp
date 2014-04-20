@@ -108,21 +108,30 @@ function setAction(linkNum) {
 
 <style>
 .body {
-	 background: linear-gradient(#FFA319, #FFFF66, #FFFF66);
+		
+	/*  background: linear-gradient(#FFA319, #FFFF66, #FFFF66); */
 	 background-repeat: no-repeat;
+	 
 }
 
 #mainContainer {
-	height: 800px;
-	margin: 0px 50px 0px 50px;
+	height: 100%;
+	width : 1340px;
+	position: absolute;
+	top:50px;
+	left:0px;
 	background-color: white;
-	box-shadow: 0px 0px 25px 0px grey;
+	/* box-shadow: 0px 0px 25px 0px grey; */
 }
 
 #header {
-	width: 100%;
+	width: 1350px;
 	background: #CC3300;
 	height: 50px;
+	position : fixed;
+	top : 0px;
+	left: 0px;
+	z-index : 10;
 }
 
 .DP {
@@ -133,17 +142,19 @@ function setAction(linkNum) {
 }
 
 #leftPan {
+	position:fixed;
 	width: 200px;
 	height: 750px;
 	border-right: 1px solid silver;
-	float:left;
 }
 
 .rightPan{
-	width: 650px;
+	width: 770px;
 	height: 750px;
 	border-right: 1px solid silver;
-	float:left;
+	position : absolute;
+	left : 200px;
+	
 }
 
 .ticker p{
@@ -359,13 +370,13 @@ color:white;
 		</div>
 		
 		<!-- ------------------------- TICKER SECTION STARTS HERE ------------------------- -->	
-			<div  class="ticker">
+			<!-- <div  class="ticker">
 					<p>Harrypotter has been added to the Wishlist by user 1</p>
 					<p>Headfirst sql has been added to the Wishlist by user 2</p>
 					<p>Oracle handbook has been added to the Ownlist by user 1</p>
 					<p>Mein Kamf has been added to the OwnList by user 3</p>
 					<p>God Father has been added to the Wishlist by user 3</p>
-			</div>
+			</div> -->
 			
 	</div>
 	
