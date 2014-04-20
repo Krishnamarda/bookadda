@@ -2,6 +2,7 @@
 .rightPan{
 	width: 600px;
 	border-right: 1px solid silver;
+	height:100% auto;
 	float:left;
 }
 
@@ -32,11 +33,12 @@
 	font-size: 18px;
 	
 }
-
-.rightPanList li:hover {
-/* background : #FEEF90; */
-text-decoration: underline;
+.rightPanList{
+	border-right: 1px solid silver;
+	border-left: 1px solid silver;
+	margin-right : -1px;
 }
+ 
 
 
 .button {
@@ -92,5 +94,5 @@ border-bottom: 1px solid silver;
 font-family: 'Bree Serif', serif;
 	font-weight: 300;
 	font-size: 25px;
-	cursor : pointer;
+	background : #EBEBE0;
 }
